@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignIn, SignInButton, SignOutButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 function Navbar() {
   return (
@@ -9,8 +10,21 @@ function Navbar() {
       >
         Brasis
       </Link>
+      <div className="flex items-center gap-8">
+        <SignedOut>
+          <SignInButton mode="modal">
+            <button className="bg-teal-600 text-white px-4 py-2 rounded">
+              Fazer Login
+            </button>
+          </SignInButton>
+        </SignedOut>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
     </nav>
-  ); 
+  );
 }
 
 export default Navbar;
